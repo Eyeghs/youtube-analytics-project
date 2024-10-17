@@ -35,6 +35,10 @@ class Video():
 class PLVideo():
     
     def __init__(self, video_id: str, playlist_id: str):
+        """
+        Экземпляр инициализируется id видео и id плейлиста. 
+        Дальше все данные будут подтягиваться по API.
+        """
         self._video_id = video_id
         self._playlist_id = playlist_id
         api_key: str = os.getenv('YT_API_KEY')
@@ -61,8 +65,4 @@ class PLVideo():
         """Выводит в консоль информацию о видео."""
         printj(self.video_response)
         
-    def printj_video_in_playlist(self):
-        """Выводит в консоль информацию о всех видео в плейлисте."""
-        for playlist in self.playlist_videos['items']:
-            printj(playlist)
         

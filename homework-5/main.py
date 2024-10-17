@@ -1,12 +1,13 @@
-import datetime
-
-from src.playlist import PlayList
+import datetime, sys
+sys.path.insert(0, '..')
+from src.PlayList import PlayList
 
 if __name__ == '__main__':
     pl = PlayList('PLv_zOGKKxVpj-n2qLkEM2Hj96LO6uqgQw')
     assert pl.title == "Moscow Python Meetup №81"
     assert pl.url == "https://www.youtube.com/playlist?list=PLv_zOGKKxVpj-n2qLkEM2Hj96LO6uqgQw"
 
+    pl.total_duration
     duration = pl.total_duration
     assert str(duration) == "1:49:52"
     assert isinstance(duration, datetime.timedelta)
