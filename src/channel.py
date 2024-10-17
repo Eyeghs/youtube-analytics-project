@@ -9,9 +9,6 @@ def printj(dict_to_print: dict) -> None:
 
 class Channel:
     """Класс для ютуб-канала"""
-    
-
-
     def __init__(self, channel_id: str) -> None:
         """Экземпляр инициализируется id канала. Дальше все данные будут подтягиваться по API."""
         api_key: str = os.getenv('YT_API_KEY')
@@ -24,6 +21,52 @@ class Channel:
         self.subscribets_count = self.channel['items'][0]['statistics']['subscriberCount']
         self.video_count = self.channel['items'][0]['statistics']['videoCount']
         self.views_count = self.channel['items'][0]['statistics']['viewCount']
+        
+    def __str__(self) -> str:
+        """Выводит в консоль информацию о канале."""
+        return f"{self.title} {self.url}"
+    
+    def __add__(self, other):
+        """Складывает каналы."""
+        if not isinstance(other, Channel):
+            raise TypeError('Требуется канал')
+        return int(self.subscribets_count) + int(other.subscribets_count)
+    
+    def __sub__(self, other):
+        """Вычитает каналы."""
+        if not isinstance(other, Channel):
+            raise TypeError('Требуется канал')
+        return int(self.subscribets_count) - int(other.subscribets_count)
+    
+    def __eq__(self, other):
+        """Сравнивает каналы."""
+        if not isinstance(other, Channel):
+            raise TypeError('Требуется канал')
+        return self.subscribets_count == other.subscribets_count
+    
+    def __lt__(self, other):
+        """Сравнивает каналы."""
+        if not isinstance(other, Channel):
+            raise TypeError('Требуется канал')
+        return self.subscribets_count < other.subscribets_count
+    
+    def __le__(self, other):
+        """Сравнивает каналы."""
+        if not isinstance(other, Channel):
+            raise TypeError('Требуется канал')
+        return self.subscribets_count <= other.subscribets_count
+    
+    def __gt__(self, other):
+        """Сравнивает каналы."""
+        if not isinstance(other, Channel):
+            raise TypeError('Требуется канал')
+        return self.subscribets_count > other.subscribets_count
+    
+    def __ge__(self, other):
+        """Сравнивает каналы."""
+        if not isinstance(other, Channel):
+            raise TypeError('Требуется канал')
+        return self.subscribets_count >= other.subscribets_count
         
     @property
     def channel_id(self) -> str:
