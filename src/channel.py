@@ -3,13 +3,13 @@ import sys
 sys.path.insert(0, '..')
 import os, json
 
-def printj(dict_to_print: dict) -> None:
+def printj(dict_to_print: dict):
     """Выводит словарь в json-подобном удобном формате с отступами"""
     print(json.dumps(dict_to_print, indent=2, ensure_ascii=False))
 
 class Channel:
     """Класс для ютуб-канала"""
-    def __init__(self, channel_id: str) -> None:
+    def __init__(self, channel_id: str):
         """Экземпляр инициализируется id канала. Дальше все данные будут подтягиваться по API."""
         api_key: str = os.getenv('YT_API_KEY')
         youtube = build('youtube', 'v3', developerKey=api_key)
