@@ -1,3 +1,5 @@
+import sys
+sys.path.insert(0, '..')
 from src.channel import Channel
 
 if __name__ == '__main__':
@@ -9,7 +11,7 @@ if __name__ == '__main__':
     print(moscowpython.url)  # https://www.youtube.com/channel/UC-OVMPlMA3-YCIeg4z5z23A
 
     # менять не можем
-    moscowpython.channel_id = 'Новое название'
+    # moscowpython.channel_id = 'Новое название'
     # AttributeError: property 'channel_id' of 'Channel' object has no setter
 
     # можем получить объект для работы с API вне класса
@@ -17,4 +19,4 @@ if __name__ == '__main__':
     # <googleapiclient.discovery.Resource object at 0x000002B1E54F9750>
 
     # создаем файл 'moscowpython.json' в данными по каналу
-    moscowpython.to_json('moscowpython.json')
+    moscowpython.to_json('../src/moscowpython.json')
