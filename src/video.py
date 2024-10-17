@@ -18,10 +18,16 @@ class Video():
         self.video_response = youtube.videos().list(part='snippet,statistics,contentDetails,topicDetails',
                                        id=video_id
                                        ).execute()
-        self.title = self.video_response['items'][0]['snippet']['title']
-        self.url = 'https://www.youtube.com/watch?v=AWX4JnAnjBE' + self.video_id
-        self.views_count = self.video_response['items'][0]['statistics']['viewCount']
-        self.like_count = self.video_response['items'][0]['statistics']['likeCount']
+        try:
+            self.title = self.video_response['items'][0]['snippet']['title']
+            self.url = 'https://www.youtube.com/watch?v=AWX4JnAnjBE' + self.video_id
+            self.views_count = self.video_response['items'][0]['statistics']['viewCount']
+            self.like_count = self.video_response['items'][0]['statistics']['likeCount']
+        except:
+            self.title = None
+            self.url = None
+            self.views_count = None
+            self.like_count = None
         
     @property
     def video_id(self):

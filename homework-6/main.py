@@ -1,3 +1,5 @@
+import sys
+sys.path.insert(0, '..')
 from src.video import Video
 
 if __name__ == '__main__':
